@@ -8,8 +8,6 @@ import java.util.regex.Pattern;
 /**
  * 手机号码校验类
  *
- * @author: LC
- * @date 2022/3/2 2:16 下午
  * @ClassName: ValidatorUtil
  */
 public class ValidatorUtil {

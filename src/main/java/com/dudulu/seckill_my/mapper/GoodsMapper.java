@@ -12,6 +12,7 @@ import java.util.List;
  * </p>
  *
  * @author dudulu
+ *
  * @since 2023-12-29
  */
 public interface GoodsMapper extends BaseMapper<Goods> {

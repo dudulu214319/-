@@ -34,7 +34,6 @@ import java.util.concurrent.TimeUnit;
  * </p>
  *
  * @author dudulu
- * @since 2023-12-29
  */
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements IOrderService {
@@ -49,7 +48,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @Transactional
+    @Transactional // 事务传播机制：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。
     @Override
     public Order seckill(User user, GoodsVo goodsVo) {
         // 减库存
@@ -67,7 +66,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         // 对最后一件物品的处理事务
         if (seckillGoods.getStockCount() < 1) {
             //判断是否还有库存
-            redisTemplate.opsForValue().set("isStockEmpty:" + goodsVo.getId(), "0");
+            redisTemplate.opsForValue().set("isStockEmpty:" + goodsVo.getId(), "0"); // redis标记
             return null;
         }
         // 创建订单

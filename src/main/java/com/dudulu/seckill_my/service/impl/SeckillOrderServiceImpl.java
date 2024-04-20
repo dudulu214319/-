@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author dudulu
- * @since 2023-12-29
  */
 @Service
 public class SeckillOrderServiceImpl extends ServiceImpl<SeckillOrderMapper, SeckillOrder> implements ISeckillOrderService {
@@ -31,7 +30,7 @@ public class SeckillOrderServiceImpl extends ServiceImpl<SeckillOrderMapper, Sec
         SeckillOrder seckillOrder = seckillOrderMapper.selectOne(new QueryWrapper<SeckillOrder>().eq("user_id", user.getId()).eq("goods_id", goodsId));
         if(seckillOrder != null) {
             return seckillOrder.getOrderId();
-        }else if (redisTemplate.hasKey("isStockEmpty:" + goodsId)) {
+        }else if (redisTemplate.hasKey("isStockEmpty:" + goodsId)) { //最后异步返回结果的时候还有库存保护
             return -1L;
         }else {
             return 0L;

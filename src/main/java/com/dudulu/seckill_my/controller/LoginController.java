@@ -19,12 +19,7 @@ import javax.validation.Valid;
 
 /**
 * @program: SecKill_my
-*
 * @description: 登录
-*
-* @author: Mr.Wang
-*
-* @create: 2023-12-02 10:48
 **/
 @Controller
 @RequestMapping("/login")

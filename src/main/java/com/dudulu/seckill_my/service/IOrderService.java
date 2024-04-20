@@ -13,7 +13,6 @@ import com.dudulu.seckill_my.vo.OrderDetailVo;
  * </p>
  *
  * @author dudulu
- * @since 2023-12-29
  */
 public interface IOrderService extends IService<Order> {
 

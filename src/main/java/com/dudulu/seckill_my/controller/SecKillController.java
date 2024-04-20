@@ -42,8 +42,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * @program: SecKill_my
  * @description: 实现秒杀（按钮点击）
- * @author: Mr.Wang
- * @create: 2024-01-03 11:01
  **/
 @Slf4j
 @Controller
@@ -111,7 +109,7 @@ public class SecKillController implements InitializingBean { // bean生命周期
             return RespBean.error(RespBeanEnum.ERROR_CAPTCHA);
         }
         String str = orderService.createPath(user, goodsId);
-        return RespBean.success(str);
+        return RespBean.success(str); // 动态字符串返回给前端
     }
 
 
@@ -178,7 +176,7 @@ public class SecKillController implements InitializingBean { // bean生命周期
         if(EmptyStockMap.get(goodsId)) {
             return RespBean.error(RespBeanEnum.EMPTY_STOCK);
         }
-        // 2.redis预减库存，这里用lua脚本实现分布式锁，保证线程安全
+        // 2.redis预减库存，这里用lua脚本保证（并发）原子性，保证线程安全
 //        Long stock = valueOperations.decrement("seckillGoods:" + goodsId);
         Long stock = (Long) redisTemplate.execute(redisScript, Collections.singletonList("seckillGoods:" + goodsId), Collections.EMPTY_LIST);
         if (stock < 0) {
@@ -188,7 +186,7 @@ public class SecKillController implements InitializingBean { // bean生命周期
         }
         // 3.构建seckillMessage，mqSender发送给queue
         SeckillMessage seckillMessage = new SeckillMessage(user, goodsId);
-        mqSender.sendSeckillMessage(JsonUtil.object2JsonStr(seckillMessage)); // 异步
+        mqSender.sendSeckillMessage(JsonUtil.object2JsonStr(seckillMessage)); // 异步发送json
         return RespBean.success(0); // 秒杀消息已发送给mq，正在排队
 
         /*
@@ -214,7 +212,7 @@ public class SecKillController implements InitializingBean { // bean生命周期
     }
 
     /**
-     * 初始化的时候加载<goodId : 库存数量>到redis里
+     * 初始化的时候加载<goodId : 库存数量>到redis里 （缓存预热）
      * @throws Exception
      */
     @Override

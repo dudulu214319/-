@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 /**
  * 消息发送者
  *
- * @author: LC
- * @date 2022/3/7 7:42 下午
  * @ClassName: MQSender
  */
 @Service
@@ -21,15 +19,39 @@ public class MQSender {
 
     /**
      * 发送秒杀信息
-     * @author LiChao
-     * @operation add
-     * @date 6:44 下午 2022/3/8
      * @param message
      * @return void
      **/
     public void sendSeckillMessage(String message) {
         log.info("发送消息" + message);
-        rabbitTemplate.convertAndSend("seckillExchange", "seckill.message", message);
+        rabbitTemplate.convertAndSend("seckillExchange", "seckill.message", message); // 被点号“．”分隔开的每一段独立的字符串称为一个单词
+
+        // 可以考虑设置分布式唯一id（幂等性，唯一索引，重复消费）和过期时间（消息堆积，前端反馈）
+//        public void makeOrderDirect(Long userId, Long productId, int num) {
+//
+//            // 1: 定义交换机
+//            String exchangeName = "direct_order_exchange";
+//            // 2: 路由key
+//            String routeKey = "sms";
+//            // 3.模拟用户下单
+//            String orderId = UUID.randomUUID().toString();
+//
+//            //4.给消息设置过期时间
+//            MessagePostProcessor messagePostProcessor = new MessagePostProcessor() {
+//                @Override
+//                public Message postProcessMessage(Message message) throws AmqpException {
+//                    //设置过期时间，超过5秒消息就会消失
+//                    message.getMessageProperties().setExpiration("5000");
+//                    //设置编码格式
+//                    message.getMessageProperties().setContentEncoding("UTF-8");
+//                    return message;
+//                }
+//            };
+//
+//            //5. 通过MQ来完成消息的分发
+//            //将messagePostProcessor对象放进发送消息的方法中即可
+//            rabbitTemplate.convertAndSend(exchangeName, routeKey, orderId, messagePostProcessor);
+        }
     }
 
 //    public void send(Object msg) {
@@ -79,6 +101,3 @@ public class MQSender {
 //        Message message = new Message(msg.getBytes(), properties);
 //        rabbitTemplate.convertAndSend("headersExchange", "", message);
 //    }
-
-
-}

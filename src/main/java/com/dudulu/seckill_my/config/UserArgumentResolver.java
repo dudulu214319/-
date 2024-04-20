@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @program: SecKill_my
  * @description: 自定义用户参数
- * @author: Mr.Wang
- * @create: 2023-12-22 10:19
  **/
 // 表示一个带注释的类是一个“组件”，成为Spring管理的Bean。当使用基于注解的配置和类路径扫描时，这些类被视为自动检测的候选对象。
 @Component

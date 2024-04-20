@@ -1,5 +1,7 @@
 server:
   port: 8888
+  servlet:
+    context-path: /api
 spring:
   #静态资源处理
   resources:
@@ -48,7 +50,7 @@ spring:
         max-wait: 1000ms
         max-idle: 200
 
-  #RabbitMQ
+#  RabbitMQ
   rabbitmq:
     host: 62.234.207.187
     username: admin

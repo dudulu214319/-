@@ -15,12 +15,12 @@ import java.math.BigDecimal;
  * </p>
  *
  * @author dudulu
- * @since 2023-12-29
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("t_goods")
-public class Goods implements Serializable {
+public class
+Goods implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

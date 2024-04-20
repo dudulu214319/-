@@ -134,11 +134,11 @@
             },
             success: function (data) {
                 if (data.code == 200) {
-                    var result = data.obj;
+                    var result = data.obj; // -1下单失败，库存不够；orderId（结合MQid）成功；0轮询
                     if (result < 0) {
                         layer.msg("对不起，秒杀失败");
                     } else if (result == 0) {
-                        setTimeout(function () {
+                        setTimeout(function () { // 递归调用50ms轮询
                             getResult(goodsId)
                         }, 50);
                     } else {

@@ -13,11 +13,9 @@ import java.util.List;
 /**
  * @program: SecKill_my
  * @description: MVC配置类
- * @author: Mr.Wang
- * @create: 2023-12-19 20:26
  **/
 @Configuration
-@EnableWebMvc // 全面接管boot中的mvc配置，注释掉的话默认的mvc配置里会把/**作为static资源的默认读取路径，否则的话就读不到static资源
+@EnableWebMvc // 全面接管boot中的mvc配置，注释掉的话默认的mvc配置里会把/**(resources)作为static资源的默认读取路径，否则的话就读不到static资源
 public class WebConfig implements WebMvcConfigurer {
     // 添加自定义拦截器，消息转换器等，实现WebMvcConfigurer接口
     @Autowired

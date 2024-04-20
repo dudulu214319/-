@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 /**
  * @program: SecKill_my
  * @description: 订单细节
- * @author: Mr.Wang
- * @create: 2024-02-01 17:12
  **/
 @Data
 @NoArgsConstructor

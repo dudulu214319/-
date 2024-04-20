@@ -1,18 +1,13 @@
 package com.dudulu.seckill_my.exception;
-
 import com.dudulu.seckill_my.vo.RespBean;
 import com.dudulu.seckill_my.vo.RespBeanEnum;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-
-
 /**
  * @program: SecKill_my
  * @description: 全局异常处理
- * @author: Mr.Wang
- * @create: 2023-12-12 10:52
  **/
 @RestControllerAdvice // 自动返回Respbody不用在方法上具体去返回（把RespBean添加到ResponseBody里？）
 public class GlobalExceptionHandler {

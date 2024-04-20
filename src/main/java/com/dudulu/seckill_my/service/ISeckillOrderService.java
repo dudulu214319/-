@@ -10,7 +10,6 @@ import com.dudulu.seckill_my.pojo.User;
  * </p>
  *
  * @author dudulu
- * @since 2023-12-29
  */
 public interface ISeckillOrderService extends IService<SeckillOrder> {
 

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
  * </p>
  *
  * @author dudulu
- * @since 2023-11-21
  */
 public interface IUserService extends IService<User> {
     RespBean doLogin(LoginVo loginVo, HttpServletRequest request, HttpServletResponse response) throws GlobalException;

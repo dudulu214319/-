@@ -10,8 +10,6 @@ import javax.validation.constraints.NotNull;
 /**
  * @program: SecKill_my
  * @description: 登录参数
- * @author: Mr.Wang
- * @create: 2023-12-09 16:44
  **/
 
 @Data

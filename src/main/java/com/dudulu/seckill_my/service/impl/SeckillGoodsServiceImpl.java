@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author dudulu
- * @since 2023-12-29
  */
 @Service
 public class SeckillGoodsServiceImpl extends ServiceImpl<SeckillGoodsMapper, SeckillGoods> implements ISeckillGoodsService {

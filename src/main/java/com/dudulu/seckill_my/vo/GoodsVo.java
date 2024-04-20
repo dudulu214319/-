@@ -14,8 +14,6 @@ import java.util.Date;
 /**
  * @program: SecKill_my
  * @description: 商品返回对象
- * @author: Mr.Wang
- * @create: 2023-12-30 20:28
  **/
 @Data
 @NoArgsConstructor

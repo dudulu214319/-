@@ -7,8 +7,6 @@ import lombok.ToString;
 /**
  * @program: SecKill_my
  * @description: 公共返回对象枚举
- * @author: Mr.Wang
- * @create: 2023-12-02 11:36
  **/
 @Getter
 @ToString

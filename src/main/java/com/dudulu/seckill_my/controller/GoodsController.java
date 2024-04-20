@@ -29,11 +29,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * @program: SecKill_my
  * @description: 商品
- * 5000个线程 测10次
- * windows优化前qps: 940
- * Linux优化前qps: 1250
- * @author: Mr.Wang
- * @create: 2023-12-14 11:43
  **/
 @Controller
 @RequestMapping("/goods")
@@ -114,11 +109,11 @@ public class GoodsController {
         html = thymeleafViewResolver.getTemplateEngine().process("goodsDetail", webContext);
         if(!StringUtils.isEmpty(html)) {
             valueOperations.set("goodsDetail:" + goodsId, html, 60, TimeUnit.SECONDS);
-        }
-        return html;
+    }
+        return html; // ViewResolver是Spring MVC里的东西
     }
 
-    @RequestMapping(value = "/toDetail/{goodsId}")
+    @RequestMapping(value = "/toDetail/{goodsId}") // @PathVariable用于获取路径参数，@RequestParam用于获取查询参数。
     @ResponseBody
     public RespBean toDetail(Model model, User user, @PathVariable Long goodsId, HttpServletRequest request, HttpServletResponse response) {
         GoodsVo goods = GoodsService.findGoodsVoById(goodsId);

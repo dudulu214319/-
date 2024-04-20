@@ -9,7 +9,6 @@ import com.dudulu.seckill_my.pojo.SeckillGoods;
  * </p>
  *
  * @author dudulu
- * @since 2023-12-29
  */
 public interface ISeckillGoodsService extends IService<SeckillGoods> {
 

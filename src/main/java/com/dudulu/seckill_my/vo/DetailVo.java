@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 /**
  * @program: SecKill_my
  * @description: 详情返回对象
- * @author: Mr.Wang
- * @create: 2024-01-30 11:12
  **/
 @Data
 @NoArgsConstructor
